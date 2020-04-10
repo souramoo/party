@@ -29,18 +29,24 @@ export function processGameUpdate(update) {
 
 export function processPlayerEntered(playerList) {
   players = playerList;
-  console.log(players);
   // update ui
   showChatHeads();
 }
 export function processPlayerLeft(playerId) {
   players = players.filter(el => (el === playerId));
   // update ui
-  showChatHeads()
+  showChatHeads();
 }
 
 function showChatHeads() {
-document.getElementById("chatheads").innerHTML = players.length + " people online";
+  const photosHolder = document.getElementById('chatheadphotos');
+  photosHolder.innerHTML = '';
+  players.forEach(id => {
+    const el = document.createElement('div');
+    el.style.backgroundImage = `url(/photo/${id})`;
+    photosHolder.append(el);
+  });
+  document.getElementById('chatheadstatus').innerHTML = `${players.length} people online`;
 }
 
 
@@ -79,7 +85,7 @@ export function getCurrentState() {
     const ratio = (serverTime - baseUpdate.t) / (next.t - baseUpdate.t);
     return {
       me: interpolateObject(baseUpdate.me, next.me, ratio),
-      others: interpolateObjectArray(baseUpdate.others, next.others, ratio)
+      others: interpolateObjectArray(baseUpdate.others, next.others, ratio),
     };
   }
 }

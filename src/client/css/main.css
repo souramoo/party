@@ -25,9 +25,27 @@ hr {
   width: 100%;
   height: 100%;
 }
+#chatheads {
+  color: white;
+  bottom: 0;
+  position: absolute;
+  right: 9px;
+  text-align: right;
+}
 
 #videos-container #webcamHolder #webcamVideo {
   width: 50%;
+}
+#chatheadphotos div {
+  float: right;
+  height: 60px;
+  width: 60px;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right:7px;
+}
+#chatheadphotos div:first-of-type {
+margin-right:0;
 }
 
 #webcamLogin #webcamHolder {
