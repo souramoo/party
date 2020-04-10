@@ -12,10 +12,22 @@ function setLeftButtonState(e) {
     (e.buttons & 1) === 1;
 }
 
+let lastMouseEvent = null;
+
+function keepMouseGoing() {
+  if (leftMouseButtonOnlyDown && lastMouseEvent) {
+    handleInput(lastMouseEvent.clientX, lastMouseEvent.clientY);
+    setTimeout(keepMouseGoing, 200);
+  }
+}
+
+
 function onMouseInput(e) {
   setLeftButtonState(e);
+  lastMouseEvent = e;
   if (leftMouseButtonOnlyDown && e.clientX < window.innerWidth / 2) {
     handleInput(e.clientX, e.clientY);
+    setTimeout(keepMouseGoing, 200);
   }
 }
 function onClickInput(e) {
