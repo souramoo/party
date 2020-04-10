@@ -22,6 +22,7 @@ Promise.all([
     document.getElementById('game-canvas').style.display = 'block';
     document.getElementById('chatheads').style.display = 'block';
     document.body.style.backgroundColor = 'white';
+    document.body.style.overflow = 'hidden';
     setWebcamState(1);
     play(getMyFace());
     playMenu.classList.add('hidden');
