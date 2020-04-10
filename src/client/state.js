@@ -33,7 +33,9 @@ export function processPlayerEntered(playerList) {
   showChatHeads();
 }
 export function processPlayerLeft(playerId) {
-  players = players.filter(el => (el === playerId));
+  players = players.filter(el => (el !== playerId));
+  console.log(playerId)
+  console.log(players)
   // update ui
   showChatHeads();
 }

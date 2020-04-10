@@ -3,7 +3,6 @@ import { startRendering, stopRendering } from './render';
 import { startCapturingInput, stopCapturingInput } from './input';
 import { downloadAssets } from './assets';
 import { initState } from './state';
-import { setLeaderboardHidden } from './leaderboard';
 import { initWebcam, setWebcamState, getMyFace, getStream } from './webcam';
 import { initMyStream } from './webrtc';
 
@@ -33,7 +32,6 @@ Promise.all([
     setTimeout(startCapturingInput, 100);
     initMyStream(getClientId(), getStream());
     startRendering();
-    setLeaderboardHidden(true);
   };
 }).catch(console.error);
 
@@ -41,6 +39,5 @@ function onGameOver() {
   stopCapturingInput();
   stopRendering();
   playMenu.classList.remove('hidden');
-  setLeaderboardHidden(true);
   setWebcamState(0);
 }

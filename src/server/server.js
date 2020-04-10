@@ -59,16 +59,20 @@ function handleEmote(emote) {
 function onDisconnect() {
   game.removePlayer(this);
   this.broadcast.emit(Constants.MSG_TYPES.BRDCST_PLAYER_LEFT, this.id);
-  console.log("Player left! " + this.id)
+  console.log(`Player left! ${this.id}`);
 }
 
 app.get('/photo/:id', (req, res) => {
   const im = game.getPhoto(req.params.id).split(',')[1];
-  const img = Buffer.from(im, 'base64');
+  if (im) {
+    const img = Buffer.from(im, 'base64');
 
-  res.writeHead(200, {
-    'Content-Type': 'image/png',
-    'Content-Length': img.length,
-  });
-  res.end(img);
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Length': img.length,
+    });
+    res.end(img);
+  } else {
+    res.status(404).send("Player no longer exists")
+  }
 });

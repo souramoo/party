@@ -33,7 +33,7 @@ function setupRemoteStream(call, id) {
   call.on('close', () => {
     peerHangUp(call.peer);
   });
-  call.on('error', err => {
+  call.on('error', () => {
     peerHangUp(call.peer);
   });
 }
@@ -47,23 +47,26 @@ function fixVideoLayouts() {
   }
   if (othervideos.length === 1) { // one video full screen
     othervideos.forEach(el => {
+      // eslint-disable-next-line no-param-reassign
       el.style.minWidth = '100%';
+      // eslint-disable-next-line no-param-reassign
       el.style.maxHeight = '60%';
     });
     myvideo[0].style.minWidth = '50%';
     myvideo[0].style.maxHeight = '20%';
     document.getElementById('emojiHolder').style.width = '50%';
   } else { // two videos side by side
-    const nearest_sq = Math.round(Math.sqrt(othervideos.length + 1));
+    const nearestSq = Math.round(Math.sqrt(othervideos.length + 1));
     othervideos.forEach(el => {
-      el.style.minWidth = `${100 / nearest_sq}%`;
-      el.style.maxHeight = `${80 / nearest_sq}%`;
+      // eslint-disable-next-line no-param-reassign
+      el.style.minWidth = `${100 / nearestSq}%`;
+      // eslint-disable-next-line no-param-reassign
+      el.style.maxHeight = `${80 / nearestSq}%`;
     });
-    myvideo[0].style.minWidth = `${100 / nearest_sq}%`;
-    myvideo[0].style.maxHeight = `${80 / nearest_sq}%`;
-    document.getElementById('emojiHolder').style.width = `${100 / nearest_sq}%`;
+    myvideo[0].style.minWidth = `${100 / nearestSq}%`;
+    myvideo[0].style.maxHeight = `${80 / nearestSq}%`;
+    document.getElementById('emojiHolder').style.width = `${100 / nearestSq}%`;
   }
-  //hangUpIfNot(othervideos.map((a) => a.id.substring(3)));
 }
 
 export function initMyStream(myId, ownStream) {

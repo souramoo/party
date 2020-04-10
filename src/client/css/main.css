@@ -47,6 +47,13 @@ hr {
 #chatheadphotos div:first-of-type {
 margin-right:0;
 }
+#chatheadstatus {
+  clear:both;
+}
+
+#webcamLogin #controls {
+  display:none;
+}
 
 #webcamLogin #webcamHolder {
 

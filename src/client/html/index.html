@@ -4,55 +4,22 @@
   <title>Party @ Souradip's</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/assets/icon64.png">
-  <meta property="description" content="A complete example multiplayer .io web game implemented from scratch. Built with Javascript and Node.js. Open source on Github.">
-  <meta property="og:title" content="An example .io game">
-  <meta property="og:description" content="A complete example multiplayer .io web game implemented from scratch. Built with Javascript and Node.js. Open source on Github.">
+  <meta property="description" content="A spatially aware video call.">
+  <meta property="og:title" content="Party @ Souradip's">
+  <meta property="og:description" content="A spatially aware video call.">
   <meta property="og:image" content="/assets/icon1200.png">
- <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58664433-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-58664433-3');
-  </script>-->
 </head>
 <body>
   <div style="display: flex; flex-direction: row;">
     <canvas id="game-canvas"></canvas>
-
     <div id="videos-container"></div>
     <div id="chatheads">
       <div id="chatheadphotos"></div>
       <div id="chatheadstatus"></div>
     </div>
   </div>
-    <!--
-
-      <div style="position: relative" class="margin">
-        <video id="webcamVideo" autoplay muted playsinline style="
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);"></video>
-        <canvas id="webcamOverlay" style="position:absolute; top:0;left:0;" />
-      </div>
-
-    -->
-    </div>
-  
-  </div>
 
   <div id="play-menu" class="hidden">
-    <!--<h1>⛵ Join the Party!</h1>-->
-    <!--<p>
-      Like Houseparty but for way more than 8 people.<br /><br />Click to move where you want to go.<br />Or use the arrow keys :)
-    </p>
-    <hr />
-    <p>
-      <br />
-      Just show your face and join in.<br />You can chat to anyone you are near to just like in real life, letting you drop in and out of groups.<br /><br /> Try pulling someone for a chat ;)
-    </p>
-    <hr />-->
-
     <div class="margin">
       <div id="webcamLogin">
         <div id="webcamHolder">
@@ -60,23 +27,11 @@
           <video id="webcamVideo" autoplay muted playsinline></video>
           <canvas id="webcamOverlay"></canvas>
           <div id="emojiHolder">.</div>
+          <div id="controls"><span id="audiom">Audio</span> <span id="videom">Video</span></div>
         </div>
       </div>
       <button id="play-button" disabled="true">Please enable <b>webcam access</b> up in the address bar to join!</button>
     </div>
-  </div>
-  <div id="leaderboard" class="hidden">
-    <table>
-      <tr>
-        <th>Username</th>
-        <th>Score</th>
-      </tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
-    </table>
   </div>
   <div id="disconnect-modal" class="hidden">
     <div>

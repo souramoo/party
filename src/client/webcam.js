@@ -12,18 +12,15 @@ let stream = null;
 
 export async function initWebcam(webcamEl, canvasEl) {
   webcamElement = webcamEl;
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-    webcamElement.onloadedmetadata = () => {
-      setWebcamState(0);
-      onWebcamPlay(webcamEl, canvasEl);
-    };
-    const videoEl = webcamEl;
-    videoEl.srcObject = stream;
-    document.getElementById('play-button').innerHTML = 'Just show your face to start! :)';
-    document.getElementById('webcamDisabled').innerHTML='';
-  } catch {
-  }
+  stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+  webcamElement.onloadedmetadata = () => {
+    setWebcamState(0);
+    onWebcamPlay(webcamEl, canvasEl);
+  };
+  const videoEl = webcamEl;
+  videoEl.srcObject = stream;
+  document.getElementById('play-button').innerHTML = 'Just show your face to start! :)';
+  document.getElementById('webcamDisabled').innerHTML='';
 }
 
 export function getStream() {

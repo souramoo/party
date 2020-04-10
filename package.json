@@ -1,5 +1,5 @@
 {
-  "name": "PartyBoat",
+  "name": "spatial-party",
   "version": "1.0.0",
   "description": "",
   "main": "src/server/server.js",
