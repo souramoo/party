@@ -3,6 +3,7 @@
 import io from 'socket.io-client';
 import { throttle } from 'throttle-debounce';
 import { processGameUpdate, processPlayerEntered, processPlayerLeft } from './state';
+import { getStream } from './webcam';
 
 const Constants = require('../shared/constants');
 
@@ -30,6 +31,9 @@ export const connect = onGameOver => (
     socket.on(Constants.MSG_TYPES.GAME_OVER, onGameOver);
     socket.on('disconnect', () => {
       console.log('Disconnected from server.');
+      /* getStream().getTracks().forEach(track => {
+        track.stop();
+      }); */
       document.getElementById('disconnect-modal').classList.remove('hidden');
       document.getElementById('reconnect-button').onclick = () => {
         window.location.reload();

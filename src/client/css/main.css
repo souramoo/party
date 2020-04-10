@@ -125,6 +125,46 @@ margin-right:0;
   float:none;
 }
 
+/* Tooltip text */
+.ttooltip .ttooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin-top: -36px;
+  margin-left: -108px;
+}
+
+/* Tooltip arrow */
+.ttooltip .ttooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.ttooltip:hover .ttooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 .mirrored {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);

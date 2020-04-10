@@ -11,6 +11,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110321979-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-110321979-5');
+  </script>
 </head>
 <body>
   <div style="display: flex; flex-direction: row;">
@@ -29,11 +37,12 @@
       <div class="switch-field">
         <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
         <label for="radio-one"><i class="fas fa-globe-europe"></i> Public World</label>
-        <input type="radio" id="radio-two" name="switch-one" value="no" />
-        <label for="radio-two"><i class="fas fa-lock"></i> Join Private</label>
+        <input type="radio" id="radio-two" name="switch-one" value="no" disabled />
+        <label for="radio-two" class="ttooltip"><i class="fas fa-lock"></i> Join Private<span class="ttooltiptext">Coming soon...</span></label>
         <input type="radio" id="radio-three" name="switch-one" value="create" disabled />
-        <label for="radio-three"><i class="fas fa-plus"></i> Create Private</label>
+        <label for="radio-three" class="ttooltip"><i class="fas fa-plus"></i> Create Private<span class="ttooltiptext">Coming soon...</span></label>
       </div>
+      <!--<input type="text" id="room-id" value="Room code" disabled />-->
     </div>
       <div id="webcamLogin">
         <div id="webcamHolder">
