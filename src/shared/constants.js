@@ -13,7 +13,7 @@ module.exports = Object.freeze({
 
   CALL_DISTANCE: 400,
 
-  MAP_SIZE: 3000,
+  MAP_SIZE: 1500,
   MSG_TYPES: {
     JOIN_GAME: 'join_game',
     GAME_UPDATE: 'update',
