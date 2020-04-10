@@ -22,25 +22,25 @@ export async function initWebcam(webcamEl, canvasEl) {
   document.getElementById('play-button').innerHTML = 'Just show your face to start! :)';
   document.getElementById('webcamDisabled').innerHTML = '';
 
-  var video_button = document.createElement("button");
-video_button.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i>';
+  // add mute buttons
+  const videoButton = document.createElement('button');
+  videoButton.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i>';
 
-video_button.onclick = function(){
-  stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
-  video_button.innerHTML = '<i class="fas fa-video'+(stream.getVideoTracks()[0].enabled ? '' : '-slash')+'" aria-hidden="true"></i>';
-}
+  videoButton.onclick = () => {
+    stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
+    videoButton.innerHTML = `<i class="fas fa-video${stream.getVideoTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
+  };
 
-var audio_button = document.createElement("button");
-audio_button.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i>';
+  const audioButton = document.createElement('button');
+  audioButton.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i>';
 
-audio_button.onclick = function(){
-  stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
-  audio_button.innerHTML = '<i class="fas fa-microphone'+(stream.getAudioTracks()[0].enabled ? '' : '-slash')+'" aria-hidden="true"></i>';
-}
+  audioButton.onclick = () => {
+    stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
+    audioButton.innerHTML = `<i class="fas fa-microphone${stream.getAudioTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
+  };
 
-document.getElementById("controls").appendChild(video_button);
-document.getElementById("controls").appendChild(audio_button);
-
+  document.getElementById('controls').appendChild(videoButton);
+  document.getElementById('controls').appendChild(audioButton);
 }
 
 export function getStream() {
