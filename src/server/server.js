@@ -73,6 +73,6 @@ app.get('/photo/:id', (req, res) => {
     });
     res.end(img);
   } else {
-    res.status(404).send("Player no longer exists")
+    res.sendStatus(404);
   }
 });
