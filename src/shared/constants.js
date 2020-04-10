@@ -11,7 +11,7 @@ module.exports = Object.freeze({
   SCORE_BULLET_HIT: 20,
   SCORE_PER_SECOND: 1,
 
-  CALL_DISTANCE: 400,
+  CALL_DISTANCE: 300,
 
   MAP_SIZE: 1500,
   MSG_TYPES: {

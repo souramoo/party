@@ -8,8 +8,8 @@
   <meta property="og:title" content="Party @ Souradip's"/>
   <meta property="og:description" content="A spatially aware video call."/>
   <meta property="og:image" content="/assets/icon1200.png"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/solid.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
 </head>
 <body>
@@ -24,19 +24,28 @@
 
   <div id="play-menu" class="hidden">
     <div class="margin">
-      
-      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-bottom: 20px;" id="choose">
-     </div>
+      <div style="text-align:center">
+        <h1>🎉🎉🎉</h1>
+      <div class="switch-field">
+        <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+        <label for="radio-one"><i class="fas fa-globe-europe"></i> Public World</label>
+        <input type="radio" id="radio-two" name="switch-one" value="no" />
+        <label for="radio-two"><i class="fas fa-lock"></i> Join Private</label>
+        <input type="radio" id="radio-three" name="switch-one" value="create" disabled />
+        <label for="radio-three"><i class="fas fa-plus"></i> Create Private</label>
+      </div>
+    </div>
       <div id="webcamLogin">
         <div id="webcamHolder">
           <div style='text-align:center;font-size:120pt;width:100%;position:absolute;' id="webcamDisabled">🥺</div>
           <video id="webcamVideo" autoplay muted playsinline></video>
           <canvas id="webcamOverlay"></canvas>
           <div id="emojiHolder">.</div>
-          <div id="controls">your video<br /></div>
+          <div id="controls"></div>
         </div>
       </div>
-      <button id="play-button" disabled="true">Please enable <b>webcam access</b> up in the address bar to join!</button>
+      <button id="play-button" disabled="true">Please enable <b>webcam access</b> up in the address bar to join!</button><br /><br />
+      <span style="font-size: 80%">made with <i class="fas fa-heart"></i> by <a href="https://twitter.com/souramoo">@souramoo</a> :)</span>
     </div>
   </div>
   <div id="disconnect-modal" class="hidden">

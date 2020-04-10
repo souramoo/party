@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: black;
+  background-color: #eee;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -22,16 +22,65 @@ hr {
   width:100%;
 }
 
+.switch-field {
+  display: inline-block;
+  overflow: hidden;
+  margin-top:21px;
+}
+
+.switch-field input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switch-field label {
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.1s ease-in-out;
+  margin-left:-4px;
+}
+
+.switch-field label:hover {
+  cursor: pointer;
+}
+
+.switch-field input:checked + label {
+  background-color: #a5dc86;
+  box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+  margin-left: 0;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
 #videos-container #webcamHolder {
   width: 100%;
   height: 100%;
 }
 #chatheads {
-  color: white;
-  bottom: 0;
-  position: absolute;
-  right: 9px;
-  text-align: right;
+  bottom: 21px;
+  color: black;
+    position: absolute;
+    right: 17px;
+    text-align: right;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 33px;
 }
 
 #videos-container #webcamHolder #webcamVideo {
@@ -50,6 +99,7 @@ margin-right:0;
 }
 #chatheadstatus {
   clear:both;
+  padding-top: 13px;
 }
 #controls {
   text-align: center;
@@ -58,6 +108,9 @@ margin-right:0;
   position: fixed;
   bottom: 21px;
   margin-left: 26px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
 }
 #controls button {
   background: white;
@@ -142,8 +195,13 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 5px;
+  border: 1px solid #929292;
+  border-radius: 17px;
   text-align: center;
+}
+
+#game-canvas {
+  display:none;
 }
 
 #play-menu p {
@@ -164,23 +222,8 @@ button:focus {
   outline: none;
 }
 
-#leaderboard {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#leaderboard th {
-  text-align: center;
-  padding: 2px 5px;
-}
-
-#leaderboard td {
-  text-align: center;
-  padding: 2px 5px;
+#play-button {
+  margin-top: 12px;
 }
 
 #disconnect-modal {
@@ -220,17 +263,5 @@ button:focus {
   #disconnect-modal > div {
     padding: 10px;
     min-width: 280px;
-  }
-
-  #leaderboard th {
-    padding: 0 3px;
-  }
-
-  #leaderboard td {
-    padding: 0 3px;
-  }
-
-  #leaderboard table {
-    font-size: 14px;
   }
 }
