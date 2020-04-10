@@ -28,9 +28,13 @@ console.log(`Server listening on port ${port}`);
 // Setup socket.io
 const io = socketio(server);
 
+// Setup the Game
+const game = new Game();
+
 // Listen for socket.io connections
 io.on('connection', socket => {
   console.log('Player connected!', socket.id);
+  io.sockets.emit(Constants.MSG_TYPES.BRDCST_PLAYER_ENTERED, game.getPlayers());
 
   socket.on(Constants.MSG_TYPES.JOIN_GAME, joinGame);
   socket.on(Constants.MSG_TYPES.INPUT, handleInput);
@@ -38,8 +42,7 @@ io.on('connection', socket => {
   socket.on('disconnect', onDisconnect);
 });
 
-// Setup the Game
-const game = new Game();
+// faster webrtc peer connections
 
 function joinGame(username) {
   game.addPlayer(this, username);
@@ -55,6 +58,8 @@ function handleEmote(emote) {
 
 function onDisconnect() {
   game.removePlayer(this);
+  this.broadcast.emit(Constants.MSG_TYPES.BRDCST_PLAYER_LEFT, this.id);
+  console.log("Player left! " + this.id)
 }
 
 app.get('/photo/:id', (req, res) => {

@@ -11,7 +11,7 @@ module.exports = Object.freeze({
   SCORE_BULLET_HIT: 20,
   SCORE_PER_SECOND: 1,
 
-  CALL_DISTANCE: 600,
+  CALL_DISTANCE: 400,
 
   MAP_SIZE: 3000,
   MSG_TYPES: {
@@ -20,6 +20,8 @@ module.exports = Object.freeze({
     INPUT: 'input',
     EMOTE: 'emote',
     GAME_OVER: 'dead',
+    BRDCST_PLAYER_ENTERED: 'entered',
+    BRDCST_PLAYER_LEFT: 'left',
   },
   EMOJIS: {
     neutral: '😐',
@@ -30,4 +32,12 @@ module.exports = Object.freeze({
     disgusted: '😠',
     surprised: '😮',
   },
+  ICE_SERVERS: [
+    { url: 'stun:stun.l.google.com:19302' },
+    {
+      url: 'turn:numb.viagenie.ca',
+      credential: 'muazkh',
+      username: 'webrtc@live.com',
+    },
+  ],
 });

@@ -5,6 +5,7 @@ const RENDER_DELAY = 100;
 const gameUpdates = [];
 let gameStart = 0;
 let firstServerTimestamp = 0;
+let players = [];
 
 export function initState() {
   gameStart = 0;
@@ -24,6 +25,24 @@ export function processGameUpdate(update) {
     gameUpdates.splice(0, base);
   }
 }
+
+
+export function processPlayerEntered(playerList) {
+  players = playerList;
+  console.log(players);
+  // update ui
+  showChatHeads();
+}
+export function processPlayerLeft(playerId) {
+  players = players.filter(el => (el === playerId));
+  // update ui
+  showChatHeads()
+}
+
+function showChatHeads() {
+document.getElementById("chatheads").innerHTML = players.length + " people online";
+}
+
 
 function currentServerTime() {
   return firstServerTimestamp + (Date.now() - gameStart) - RENDER_DELAY;

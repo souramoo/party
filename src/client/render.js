@@ -4,11 +4,11 @@ import kd from 'keydrown';
 import { debounce } from 'throttle-debounce';
 import { getCurrentState } from './state';
 import { getAsset } from './assets';
-import { peerCall, peerHangUp } from './webrtc';
+import { peerCall, peerHangUp, hangUpIfNot } from './webrtc';
 
 const Constants = require('../shared/constants');
 
-const { PLAYER_RADIUS, BULLET_RADIUS, MAP_SIZE } = Constants;
+const { PLAYER_RADIUS, MAP_SIZE } = Constants;
 
 let currentRenderState = 0;
 const profileImgs = {};
@@ -121,14 +121,6 @@ function renderPlayer(me, player) {
   context.restore();
 }
 
-function renderEmote(me, emoteObj) {
-  const { x, y, emote } = emoteObj;
-  context.font = '25px serif';
-  context.fillText(Constants.EMOJIS[emote],
-    canvas.width / 2 + x - me.x - BULLET_RADIUS,
-    canvas.height / 2 + y - me.y - BULLET_RADIUS);
-}
-
 function renderMainMenu() {
   if (currentRenderState === 0) {
     const t = Date.now() / 7500;
@@ -153,10 +145,12 @@ function logicThread() {
   if (currentRenderState === 1) {
     // handle logic processing separate from canvas draw
     const { me, others } = getCurrentState();
-    
+
     if (me) {
       others.forEach(videoCallLogic.bind(null, me));
+      hangUpIfNot(others.map(a => `pb-${a.id}`));
     }
+
     setTimeout(logicThread, 500);
   }
 }

@@ -12,6 +12,7 @@ hr {
 
 #webcamHolder {
   position: relative;
+  float:left;
 }
 
 #webcamVideo {
@@ -21,37 +22,49 @@ hr {
 }
 
 #videos-container #webcamHolder {
+  width: 100%;
+  height: 100%;
+}
+
+#videos-container #webcamHolder #webcamVideo {
   width: 50%;
+}
+
+#webcamLogin #webcamHolder {
+
+  float:none;
 }
 
 .mirrored {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  width: 50%;
+  max-width: 50%;
+  float:left;
 }
 
 #webcamOverlay {
-  width: 100%;
+  width: 99%;
   position: absolute;
   top: 0;
   left: 0;
 }
 
 #videos-container {
-  display: flex;
+  /*display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: center;*/
+    width: 100%;
 }
 
 #emojiHolder {
   text-align: right;
   font-size: 290%;
-  margin-top: -79px;
+  top: -79px;
   position: relative;
   right: 10px;
-  margin-bottom: 20px;
   color:white;
+  height:0;
 }
 
 button {

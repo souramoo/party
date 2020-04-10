@@ -1,5 +1,4 @@
 const _ = require('lodash');
-
 const Constants = require('../shared/constants');
 const Player = require('./player');
 
@@ -81,7 +80,11 @@ class Game {
   }
 
   getPhoto(id) {
-    return this.players[id].username;
+    return (this.players[id] ? this.players[id].username : '');
+  }
+
+  getPlayers() {
+    return Object.keys(this.players);
   }
 
   createUpdate(player) {
