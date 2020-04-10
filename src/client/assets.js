@@ -1,7 +1,7 @@
 import * as faceapi from 'face-api.js';
 
 const ASSET_NAMES = [
-  'dolores.png',
+  'london.jpg',
 ];
 
 const assets = {};

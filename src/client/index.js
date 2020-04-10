@@ -19,9 +19,9 @@ Promise.all([
   initWebcam(webcamInput, webcamCanvas);
   playButton.onclick = () => {
     // Play!
-    document.getElementById("game-canvas").style.display="block";
-    document.getElementById("chatheads").style.display="block";
-    document.body.style.backgroundColor="white";
+    document.getElementById('game-canvas').style.display = 'block';
+    document.getElementById('chatheads').style.display = 'block';
+    document.body.style.backgroundColor = 'white';
     setWebcamState(1);
     play(getMyFace());
     playMenu.classList.add('hidden');

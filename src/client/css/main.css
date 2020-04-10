@@ -1,8 +1,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  overscroll-behavior: none;
+  /*overflow: hidden;
+  overscroll-behavior: none;*/
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
 }
@@ -11,8 +11,13 @@ hr {
   width: 100%;
 }
 
+button {
+  border: 1px solid black !important;
+}
+
 #chatheads {
   display:none;
+  background:white;
 }
 
 #webcamHolder {
@@ -230,10 +235,10 @@ button:focus {
 }
 
 #play-menu {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 10%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  transform: translateX(-50%);
   padding: 20px 30px;
   background-color: white;
   display: flex;
@@ -242,6 +247,7 @@ button:focus {
   border: 1px solid #929292;
   border-radius: 17px;
   text-align: center;
+  margin-bottom: 10%;
 }
 
 #game-canvas {

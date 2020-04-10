@@ -43,7 +43,7 @@ function render() {
   context.lineWidth = 1;
   context.strokeRect(canvas.width / 2 - me.x, canvas.height / 2 - me.y, MAP_SIZE, MAP_SIZE);
   context.drawImage(
-    getAsset('dolores.png'),
+    getAsset('london.jpg'),
     canvas.width / 2 - me.x,
     canvas.height / 2 - me.y,
     MAP_SIZE,
