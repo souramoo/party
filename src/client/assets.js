@@ -1,8 +1,6 @@
 import * as faceapi from 'face-api.js';
 
 const ASSET_NAMES = [
-  'ship.svg',
-  'bullet.svg',
   'dolores.png',
 ];
 
