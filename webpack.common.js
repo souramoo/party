@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     polyfill: 'babel-polyfill',
+    boot: './src/client/boot.js',
     game: './src/client/index.js',
   },
   output: {
@@ -41,8 +42,13 @@ module.exports = {
       filename: '[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
+      filename: 'join.html',
+      template: 'src/client/html/join.html',
+    }),
+    new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/client/html/index.html',
+      excludeChunks: ['game'],
     }),
   ],
 };

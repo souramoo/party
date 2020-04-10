@@ -19,51 +19,61 @@
     gtag('js', new Date());
     gtag('config', 'UA-110321979-5');
   </script>
+  <style>
+    html,body {background:white !important;}
+    #play-menu { border:none !important; }
+    #bg {
+      position:absolute;
+      width:100%;height:100%;
+    }
+  </style>
 </head>
 <body>
-  <div style="display: flex; flex-direction: row;">
-    <canvas id="game-canvas"></canvas>
-    <div id="videos-container"></div>
-    <div id="chatheads">
-      <div id="chatheadphotos"></div>
-      <div id="chatheadstatus"></div>
-    </div>
-  </div>
-
-  <div id="play-menu" class="hidden">
+  <div id="bg"></div>
+  <div id="play-menu">
     <div class="margin">
       <div style="text-align:center">
-        <h1 style="font-size: 4.5rem">🎉</h1>
-      <div class="switch-field">
-        <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
-        <label for="radio-one"><i class="fas fa-globe-europe"></i> Public World</label>
-        <input type="radio" id="radio-two" name="switch-one" value="no" disabled />
-        <label for="radio-two" class="ttooltip"><i class="fas fa-lock"></i> Join Private<span class="ttooltiptext">Coming soon...</span></label>
-        <input type="radio" id="radio-three" name="switch-one" value="create" disabled />
-        <label for="radio-three" class="ttooltip"><i class="fas fa-plus"></i> Create Private<span class="ttooltiptext">Coming soon...</span></label>
-      </div>
-      <!--<input type="text" id="room-id" value="Room code" disabled />-->
-    </div>
-      <div id="webcamLogin">
-        <div id="webcamHolder">
-          <div style='text-align:center;font-size:120pt;width:100%;position:absolute;' id="webcamDisabled">🥺</div>
-          <video id="webcamVideo" autoplay muted playsinline></video>
-          <canvas id="webcamOverlay"></canvas>
-          <div id="emojiHolder">.</div>
-          <div id="controls"></div>
-        </div>
-      </div>
-      <button id="play-button" disabled="true">Please enable <b>webcam access</b> up in the address bar to join!</button><br /><br />
-      <span style="font-size: 80%">made with <i class="fas fa-heart"></i> by <a href="https://twitter.com/souramoo">@souramoo</a> :)</span>
-    </div>
-  </div>
-  <div id="disconnect-modal" class="hidden">
-    <div>
-      <h2>Disconnected from Server </h2>
-      <hr />
-      <button id="reconnect-button">RECONNECT</button>
-    </div>
-  </div>
+        <h1 style="font-size: 4.5rem">Spatial Video Chat.</h1>
+        <span style="font-size: 80%">made with <i class="fas fa-heart"></i> by <a href="https://twitter.com/souramoo">@souramoo</a> :)</span><br />
 
+        <div>
+
+          <div style="text-align:left; display:flex;align-items:center">
+            <img src="assets/landing/Web-Conf.jpg" style="width:25%;float:left;">
+            <div style="padding:20px 40px;float:left;">
+          <h2><b>Most video call apps are designed for conferences, not fun.</b></h2>
+          <p>Normally only one person can speak at a time in a standard conference call and it only gets worse the more people there are.<br />This isn't like in real life, where we zone in and out of large groups, form smaller ones as the conversation takes us.</p>
+        </div>
+          <br style="clear:both" /></div>
+
+          <div style="text-align:right; display:flex;align-items:center;flex-direction:row-reverse;">
+            <img src="assets/landing/link.png" style="width:19%;float:right;">
+            <div style="padding: 20px 40px; float:right;">
+          <h2><b>What if we can do better?</b></h2>
+          Let's make better use of our virtual space.<br /><b>Dip in and out</b> of groups by walking around just like a real party.<br />Neural networks turn facial expressions into emojis to communicate what people are doing from a distance.<p><b>You don't even need to log in, all you need is your face.</b><br /><br />This is all a bit of an experiment, why not try it out?</p></div><br style="clear:both" />
+          </div><br /><br />
+                    <button onclick="window.location.href='/join.html'" style="font-size:200%"><i class="fas fa-arrow-right"></i> Try it out!</button>
+
+        </div>
+    </div><br /><br />
+      
+    </div>
+  </div>
+  <script src="assets/landing/three.r95.min.js"></script>
+  <script src="assets/landing/vanta.dots.min.js"></script>
+  <script>
+  VANTA.DOTS({
+    el: "#bg",
+    mouseControls: true,
+    touchControls: true,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+  color: 0x0,
+  showLines: false,
+  backgroundColor: 0xffffff
+  })
+  </script>
 </body>
 </html>
