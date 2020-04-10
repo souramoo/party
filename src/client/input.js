@@ -14,12 +14,14 @@ function setLeftButtonState(e) {
 
 function onMouseInput(e) {
   setLeftButtonState(e);
-  if (leftMouseButtonOnlyDown) {
+  if (leftMouseButtonOnlyDown && e.clientX < window.innerWidth / 2) {
     handleInput(e.clientX, e.clientY);
   }
 }
 function onClickInput(e) {
-  handleInput(e.clientX, e.clientY);
+  if (e.clientX < window.innerWidth / 2) {
+    handleInput(e.clientX, e.clientY);
+  }
 }
 
 function onTouchInput(e) {
