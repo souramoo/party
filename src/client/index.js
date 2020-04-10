@@ -32,7 +32,6 @@ Promise.all([
     initState();
     setTimeout(startCapturingInput, 100);
     initMyStream(getClientId(), getStream());
-    // startCapturingInput();
     startRendering();
     setLeaderboardHidden(true);
   };

@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const Constants = require('../shared/constants');
 const Player = require('./player');
 
@@ -9,7 +11,7 @@ class Game {
     this.emotes = [];
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
-    setInterval(this.update.bind(this), 1000 / 60);
+    setInterval(this.update.bind(this), 1000 / 40);
   }
 
   addPlayer(socket, username) {
@@ -45,16 +47,6 @@ class Game {
     const dt = (now - this.lastUpdateTime) / 1000;
     this.lastUpdateTime = now;
 
-    // Update each bullet
-    const emotesToRemove = [];
-    this.emotes.forEach(emote => {
-      if (emote.update(dt)) {
-        // Destroy this bullet
-        emotesToRemove.push(emote);
-      }
-    });
-    this.emotes = this.emotes.filter(emote => !emotesToRemove.includes(emote));
-
     // Update each player
     Object.keys(this.sockets).forEach(playerID => {
       const player = this.players[playerID];
@@ -66,11 +58,14 @@ class Game {
 
     // Send a game update to each player every other time
     if (this.shouldSendUpdate) {
-      const leaderboard = this.getLeaderboard();
       Object.keys(this.sockets).forEach(playerID => {
         const socket = this.sockets[playerID];
         const player = this.players[playerID];
-        socket.emit(Constants.MSG_TYPES.GAME_UPDATE, this.createUpdate(player, leaderboard));
+        const update = this.createUpdate(player);
+        if (!_.isEqual(player.lastUpdate, update)) {
+          socket.emit(Constants.MSG_TYPES.GAME_UPDATE, { t: Date.now(), ...update });
+          player.lastUpdate = update;
+        }
       });
       this.shouldSendUpdate = false;
     } else {
@@ -89,20 +84,14 @@ class Game {
     return this.players[id].username;
   }
 
-  createUpdate(player, leaderboard) {
+  createUpdate(player) {
     const nearbyPlayers = Object.values(this.players).filter(
       p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2,
     );
-    const nearbyEmotes = this.emotes.filter(
-      b => b.distanceTo(player) <= Constants.MAP_SIZE / 2,
-    );
 
     return {
-      t: Date.now(),
       me: player.serializeForUpdate(),
       others: nearbyPlayers.map(p => p.serializeForUpdate()),
-      emotes: nearbyEmotes.map(b => b.serializeForUpdate()),
-      leaderboard,
     };
   }
 }

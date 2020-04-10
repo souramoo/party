@@ -29,7 +29,7 @@ function setCanvasDimensions() {
 window.addEventListener('resize', debounce(40, setCanvasDimensions));
 
 function render() {
-  const { me, others, emotes } = getCurrentState();
+  const { me, others } = getCurrentState();
   if (!me) {
     return;
   }
@@ -49,9 +49,6 @@ function render() {
     MAP_SIZE,
     MAP_SIZE,
   );
-
-  // draw emotes
-  emotes.forEach(renderEmote.bind(null, me));
 
   // Draw all players
   renderPlayer(me, me);
