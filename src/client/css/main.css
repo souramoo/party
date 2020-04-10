@@ -50,7 +50,21 @@ margin-right:0;
 #chatheadstatus {
   clear:both;
 }
-
+#controls {
+  text-align: center;
+}
+#controls button {
+  background: white;
+}
+.fa-crossed:after {
+  position: absolute;
+  content: "/";
+  color: black;
+  font-weight: 700;
+  font-size: 1.7em;
+  left: 7px;
+  top: -10px;
+}
 #webcamLogin #controls {
   display:none;
 }

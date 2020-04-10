@@ -20,7 +20,27 @@ export async function initWebcam(webcamEl, canvasEl) {
   const videoEl = webcamEl;
   videoEl.srcObject = stream;
   document.getElementById('play-button').innerHTML = 'Just show your face to start! :)';
-  document.getElementById('webcamDisabled').innerHTML='';
+  document.getElementById('webcamDisabled').innerHTML = '';
+
+  var video_button = document.createElement("button");
+video_button.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i>';
+
+video_button.onclick = function(){
+  stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
+  video_button.innerHTML = '<i class="fas fa-video'+(stream.getVideoTracks()[0].enabled ? '' : '-slash')+'" aria-hidden="true"></i>';
+}
+
+var audio_button = document.createElement("button");
+audio_button.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i>';
+
+audio_button.onclick = function(){
+  stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
+  audio_button.innerHTML = '<i class="fas fa-microphone'+(stream.getAudioTracks()[0].enabled ? '' : '-slash')+'" aria-hidden="true"></i>';
+}
+
+document.getElementById("controls").appendChild(video_button);
+document.getElementById("controls").appendChild(audio_button);
+
 }
 
 export function getStream() {
