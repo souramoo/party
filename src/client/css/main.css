@@ -20,9 +20,14 @@ hr {
   width:100%;
 }
 
+#videos-container #webcamHolder {
+  width: 50%;
+}
+
 .mirrored {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  width: 50%;
 }
 
 #webcamOverlay {
@@ -35,6 +40,8 @@ hr {
 #videos-container {
   display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 #emojiHolder {

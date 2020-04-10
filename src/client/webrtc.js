@@ -9,16 +9,18 @@ function setupRemoteStream(call) {
   call.on('stream', remoteStream => {
     // `stream` is the MediaStream of the remote peer.
     // Here you'd add it to an HTML video/canvas element.
-    console.log("ANSWERED")
-    if(!document.getElementById(call.peer)) {
-    const video = document.createElement('video');
-    console.log(remoteStream)
-    video.srcObject = remoteStream;
-    video.id = call.peer;
-    video.autoplay = true;
-    video.playsinline = true;
-    video.className="mirrored";
-    document.getElementById('videos-container').appendChild(video);
+    console.log('ANSWERED');
+    if (!document.getElementById(call.peer)) {
+      const video = document.createElement('video');
+      console.log(remoteStream);
+      video.srcObject = remoteStream;
+      video.id = call.peer;
+      video.autoplay = true;
+      video.playsinline = true;
+      video.className = 'mirrored';
+      video.style.height = (100 / (inCall+1)) + "%";
+      video.style.width = (100 / (inCall+1)) + "%";
+      document.getElementById('videos-container').appendChild(video);
     }
   });
   call.on('close', () => {
@@ -68,9 +70,9 @@ export function peerHangUp(peerId) {
     // no longer in a call
     inCall = inCall.filter(item => item !== rtcPeerId);
     // close the stream and remove video
-    let videoEl = document.getElementById(rtcPeerId)
+    const videoEl = document.getElementById(rtcPeerId);
     if (videoEl) {
-        videoEl.remove();
+      videoEl.remove();
     }
   }
 }

@@ -39,7 +39,7 @@ export function setWebcamState(state) {
   if (webcamState === 0) {
     document.getElementById('webcamLogin').appendChild(document.getElementById('webcamHolder'));
   } else if (state === 1) {
-    document.getElementById('videoGrid').appendChild(document.getElementById('webcamHolder'));
+    document.getElementById('videos-container').appendChild(document.getElementById('webcamHolder'));
   }
 }
 
