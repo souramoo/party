@@ -46,7 +46,7 @@ function showChatHeads() {
     el.style.backgroundImage = `url(/photo/${id})`;
     photosHolder.append(el);
   });
-  document.getElementById('chatheadstatus').innerHTML = `${players.length} people online`;
+  document.getElementById('chatheadstatus').innerHTML = `${players.length} ${players.length > 1 ? 'people' : 'person'} online`;
 }
 
 
