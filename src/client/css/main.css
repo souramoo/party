@@ -4,6 +4,7 @@ html, body {
   overflow: hidden;
   overscroll-behavior: none;
   background-color: black;
+  font-family: 'Roboto', sans-serif;
 }
 
 hr {
@@ -52,18 +53,15 @@ margin-right:0;
 }
 #controls {
   text-align: center;
+  color:white;
+
+  position: fixed;
+  bottom: 21px;
+  margin-left: 26px;
 }
 #controls button {
   background: white;
-}
-.fa-crossed:after {
-  position: absolute;
-  content: "/";
-  color: black;
-  font-weight: 700;
-  font-size: 1.7em;
-  left: 7px;
-  top: -10px;
+  width: 70px;
 }
 #webcamLogin #controls {
   display:none;

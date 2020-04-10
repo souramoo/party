@@ -10,6 +10,7 @@ let inCall = [];
 function setupRemoteStream(call, id) {
   if (!call) {
     peerHangUp(id, true);
+    console.log("Unabled to call" + id);
     return;
   }
   call.on('stream', remoteStream => {
