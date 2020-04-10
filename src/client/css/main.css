@@ -11,6 +11,10 @@ hr {
   width: 100%;
 }
 
+#chatheads {
+  display:none;
+}
+
 #webcamHolder {
   position: relative;
   float:left;
