@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PartyBoat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/assets/icon64.png">
+  <meta property="description" content="A complete example multiplayer .io web game implemented from scratch. Built with Javascript and Node.js. Open source on Github.">
+  <meta property="og:title" content="An example .io game">
+  <meta property="og:description" content="A complete example multiplayer .io web game implemented from scratch. Built with Javascript and Node.js. Open source on Github.">
+  <meta property="og:image" content="/assets/icon1200.png">
+ <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58664433-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-58664433-3');
+  </script>-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.i.slim.js"></script>-->
+</head>
+<body>
+  <div style="display: flex; flex-direction: row;">
+    <canvas id="game-canvas"></canvas>
+
+    <div id="videos-container">
+    <div id="videoGrid">
+      </div></div>
+  </div>
+    <!--
+
+      <div style="position: relative" class="margin">
+        <video id="webcamVideo" autoplay muted playsinline style="
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);"></video>
+        <canvas id="webcamOverlay" style="position:absolute; top:0;left:0;" />
+      </div>
+
+    -->
+    </div>
+  
+  </div>
+
+  <div id="play-menu" class="hidden">
+    <!--<h1>⛵ Join the Party!</h1>-->
+    <!--<p>
+      Like Houseparty but for way more than 8 people.<br /><br />Click to move where you want to go.<br />Or use the arrow keys :)
+    </p>
+    <hr />
+    <p>
+      <br />
+      Just show your face and join in.<br />You can chat to anyone you are near to just like in real life, letting you drop in and out of groups.<br /><br /> Try pulling someone for a chat ;)
+    </p>
+    <hr />-->
+
+    <div class="margin">
+      <div id="webcamLogin">
+        <div id="webcamHolder">
+          <div style='text-align:center;font-size:120pt;width:100%;position:absolute;' id="webcamDisabled">🥺</div>
+          <video id="webcamVideo" autoplay muted playsinline></video>
+          <canvas id="webcamOverlay"></canvas>
+          <div id="emojiHolder">.</div>
+        </div>
+      </div>
+      <button id="play-button" disabled="true">Please enable <b>webcam access</b> up in the address bar to join!</button>
+    </div>
+  </div>
+  <div id="leaderboard" class="hidden">
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+  <div id="disconnect-modal" class="hidden">
+    <div>
+      <h2>Disconnected from Server </h2>
+      <hr />
+      <button id="reconnect-button">RECONNECT</button>
+    </div>
+  </div>
+
+</body>
+</html>
