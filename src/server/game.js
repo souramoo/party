@@ -90,8 +90,12 @@ class Game {
   }
 
   createUpdate(player) {
-    const nearbyPlayers = Object.values(this.players).filter(
+    /*const nearbyPlayers = Object.values(this.players).filter(
       p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2 && p.room === player.room,
+    );*/
+
+    const nearbyPlayers = Object.values(this.players).filter(
+      p => p !== player && p.room === player.room,
     );
 
     return {

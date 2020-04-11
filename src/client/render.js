@@ -50,9 +50,11 @@ function render() {
     MAP_SIZE,
   );
 
+  renderMinimap(me, others);
   // Draw all players
   renderPlayer(me, me);
   others.forEach(renderPlayer.bind(null, me));
+
 }
 
 function renderBackground(x, y) {
@@ -70,6 +72,38 @@ function renderBackground(x, y) {
   backgroundGradient.addColorStop(1, 'gray');
   context.fillStyle = backgroundGradient;
   context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function renderMinimap(me, others) {
+//  context.save();
+  context.fillStyle = "white";
+  context.fillRect(10, 10, 100, 100);
+
+  context.rect(10, 10, 100, 100);
+  context.stroke();
+
+
+  context.fillStyle = "red";
+  context.beginPath();
+   context.arc( 10 + me.x *(100) / Constants.MAP_SIZE , 10 + me.y *(100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
+   context.closePath();
+   context.fill();
+
+   others.forEach(o => {
+    context.fillStyle = "blue";
+    context.beginPath();
+     context.arc( 10 + o.x *(100) / Constants.MAP_SIZE , 10 + o.y *(100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
+     context.closePath();
+     context.fill();
+   })
+
+//  context.fill();
+
+ // context.restore();
+/*
+  context.font = '15px sans-serif';
+  context.fillStyle = "black";
+  context.fillText("minimap", 35, 20);*/
 }
 
 // Renders a ship at the given coordinates

@@ -57,7 +57,6 @@ io.on('connection', socket => {
 // faster webrtc peer connections
 
 function joinGame(username) {
-  console.log(username);
   game.addPlayer(this, username);
   io.sockets.emit(Constants.MSG_TYPES.BRDCST_PLAYER_ENTERED, game.getPlayers());
 }
