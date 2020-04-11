@@ -34,6 +34,47 @@
       overflow:auto !important; 
      overscroll-behavior:unset !important; 
     }
+    .lblock {
+      text-align:left; display:flex;align-items:center
+    }
+    .lblock img {
+      width:25%;float:left;
+    }
+    .lblock div {
+      padding:20px 40px;float:left;
+    }
+    .rblock {
+      flex-direction:row-reverse;
+      text-align:right;
+    }
+    .rblock img {
+      width: 19%; float:right;
+    }
+    .rblock div {
+      float:right;
+    }
+    #play-menu {
+      width: 80% !important;
+    }
+    @media(max-width: 700px) {
+      .lblock {
+        display: block;
+        text-align: left;
+      }
+      .lblock img {
+        width: 100%;
+        float:none
+      }
+      .lblock div {
+        float:none
+      }
+      #play-menu {
+        min-width: 100% !important;
+      }
+      #play-menu {
+       top: 0% !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -46,17 +87,17 @@
 
         <div>
 
-          <div style="text-align:left; display:flex;align-items:center">
-            <img src="assets/landing/Web-Conf.jpg" style="width:25%;float:left;">
-            <div style="padding:20px 40px;float:left;">
+          <div class="lblock">
+            <img src="assets/landing/Web-Conf.jpg">
+            <div>
           <h2><b>Most video call apps are designed for conferences, not fun.</b></h2>
           <p>Normally only one person can speak at a time in a standard conference call and it only gets worse the more people there are.<br />This isn't like in real life, where we zone in and out of large groups, form smaller ones as the conversation takes us.</p>
         </div>
           <br style="clear:both" /></div>
 
-          <div style="text-align:right; display:flex;align-items:center;flex-direction:row-reverse;">
-            <img src="assets/landing/link.png" style="width:19%;float:right;">
-            <div style="padding: 20px 40px; float:right;">
+          <div class="lblock rblock">
+            <img src="assets/landing/link.png">
+            <div>
           <h2><b>What if we can do better?</b></h2>
           Let's make better use of our virtual space.<br /><b>Dip in and out</b> of groups by walking around just like a real party.<br />Neural networks turn facial expressions into emojis to communicate what people are doing from a distance.<p><b>You don't even need to log in, all you need is your face.</b><br /><br />This is all a bit of an experiment, why not try it out?</p></div><br style="clear:both" />
           </div><br /><br />

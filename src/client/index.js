@@ -67,6 +67,7 @@ Promise.all([
     document.getElementById('chatheads').style.display = 'block';
     document.body.style.backgroundColor = 'white';
     document.body.style.overflow = 'hidden';
+    document.body.style.overscrollBehavior = 'none';
     setWebcamState(1);
     play(getMyFace(), document.getElementById('room-id').value);
     playMenu.classList.add('hidden');
