@@ -2,6 +2,9 @@
     Spatial Video Chat
 </h1>
 
+Normally only one person can speak at a time in a standard conference call and it only gets worse the more people there are.
+This isn't like in real life, where we zone in and out of large groups, form smaller ones as the conversation takes us.
+
 [**Live Demo**](https://party.mookerj.ee/join).
 
 Built with [Node.js](https://nodejs.org/), [socket.io](https://socket.io/), and [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp).
