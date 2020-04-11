@@ -22,7 +22,7 @@ export async function initWebcam(webcamEl, canvasEl) {
   };
   const videoEl = webcamEl;
   videoEl.srcObject = stream;
-  document.getElementById('play-button').innerHTML = 'Just show your face to start! :)';
+  document.getElementById('play-button').innerHTML = 'Just smile at the camera and wait for it to detect your face! :)';
   document.getElementById('webcamDisabled').innerHTML = '';
 
   // add mute buttons

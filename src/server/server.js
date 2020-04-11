@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -9,12 +10,24 @@ const webpackConfig = require('../../webpack.dev.js');
 
 // Setup an Express server
 const app = express();
+
+const publicdir = `${__dirname}/../../dist`;
+
+app.use((req, res, next) => {
+  if (req.path.indexOf('.') === -1) {
+    const file = `${publicdir + req.path}.html`;
+    fs.exists(file, exists => {
+      if (exists) req.url += '.html';
+      next();
+    });
+  } else next();
+});
 app.use(express.static('public'));
 
 if (process.env.NODE_ENV === 'development') {
   // Setup Webpack for development
   const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler));
+  app.use(webpackDevMiddleware(compiler, { writeToDisk: true }));
 } else {
   // Static serve the dist/ folder in production
   app.use(express.static('dist'));
@@ -44,6 +57,7 @@ io.on('connection', socket => {
 // faster webrtc peer connections
 
 function joinGame(username) {
+  console.log(username);
   game.addPlayer(this, username);
   io.sockets.emit(Constants.MSG_TYPES.BRDCST_PLAYER_ENTERED, game.getPlayers());
 }

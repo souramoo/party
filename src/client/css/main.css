@@ -37,6 +37,10 @@ button {
   margin-top:21px;
 }
 
+#controls button {
+  border:none !important;
+}
+
 .switch-field input {
   position: absolute !important;
   clip: rect(0, 0, 0, 0);

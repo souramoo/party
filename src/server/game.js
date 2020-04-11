@@ -13,13 +13,15 @@ class Game {
     setInterval(this.update.bind(this), 1000 / 40);
   }
 
-  addPlayer(socket, username) {
+  addPlayer(socket, startData) {
     this.sockets[socket.id] = socket;
+    const { username, room } = startData;
+    console.log(room);
 
     // Generate a position to start this player at.
     const x = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
     const y = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
-    this.players[socket.id] = new Player(socket.id, username, x, y);
+    this.players[socket.id] = new Player(socket.id, username, x, y, room);
   }
 
   removePlayer(socket) {
@@ -84,12 +86,12 @@ class Game {
   }
 
   getPlayers() {
-    return Object.keys(this.players);
+    return Object.keys(this.players).map(k => ({ id: k, room: this.players[k].room }));
   }
 
   createUpdate(player) {
     const nearbyPlayers = Object.values(this.players).filter(
-      p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2,
+      p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2 && p.room === player.room,
     );
 
     return {

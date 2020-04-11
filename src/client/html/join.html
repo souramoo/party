@@ -37,12 +37,15 @@
       <div class="switch-field">
         <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
         <label for="radio-one"><i class="fas fa-globe-europe"></i> Public World</label>
-        <input type="radio" id="radio-two" name="switch-one" value="no" disabled />
-        <label for="radio-two" class="ttooltip"><i class="fas fa-lock"></i> Join Private<span class="ttooltiptext">Coming soon...</span></label>
-        <input type="radio" id="radio-three" name="switch-one" value="create" disabled />
-        <label for="radio-three" class="ttooltip"><i class="fas fa-plus"></i> Create Private<span class="ttooltiptext">Coming soon...</span></label>
+        <input type="radio" id="radio-two" name="switch-one" value="no" />
+        <label for="radio-two"><i class="fas fa-lock"></i> Join Private</label>
+        <input type="radio" id="radio-three" name="switch-one" value="create" />
+        <label for="radio-three"><i class="fas fa-plus"></i> Create Private</label> 
       </div>
-      <input type="text" id="room-id" value="Room code" disabled style="position: relative;top: -18px;" />
+      <div style="position: relative;top: -18px;display:inline-block;">
+      <label for="room-id" style="font-size: 80%;  position: relative;top: 14px;">ROOM CODE</label><br />
+      <input type="text" id="room-id" value="#public" disabled />
+    </div>
     </div>
       <div id="webcamLogin">
         <div id="webcamHolder">

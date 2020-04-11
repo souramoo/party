@@ -42,8 +42,8 @@ export const connect = onGameOver => (
   })
 );
 
-export const play = username => {
-  socket.emit(Constants.MSG_TYPES.JOIN_GAME, username);
+export const play = (username, room) => {
+  socket.emit(Constants.MSG_TYPES.JOIN_GAME, { username, room });
 };
 
 export const emote = emotion => {

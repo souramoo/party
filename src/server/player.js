@@ -2,11 +2,12 @@ const ObjectClass = require('./object');
 const Constants = require('../shared/constants');
 
 class Player extends ObjectClass {
-  constructor(id, username, x, y) {
+  constructor(id, username, x, y, room) {
     super(id, x, y, 0, Constants.PLAYER_SPEED, 0);
     this.username = username;
     this.fireCooldown = 0;
     this.emote = 'neutral';
+    this.room = room;
   }
 
   // Returns a newly created bullet, or null.
@@ -33,6 +34,7 @@ class Player extends ObjectClass {
       direction: this.direction,
       distance: this.distance,
       emote: this.emote,
+      room: this.room,
     };
   }
 }

@@ -33,20 +33,22 @@ export function processPlayerEntered(playerList) {
   showChatHeads();
 }
 export function processPlayerLeft(playerId) {
-  players = players.filter(el => (el !== playerId));
+  players = players.filter(el => (el.id !== playerId));
   // update ui
   showChatHeads();
 }
 
 function showChatHeads() {
   const photosHolder = document.getElementById('chatheadphotos');
+  const inThisRoom = players.filter(e => e.room === document.getElementById('room-id').value);
+  console.log(players);
   photosHolder.innerHTML = '';
-  players.forEach(id => {
+  inThisRoom.forEach(p => {
     const el = document.createElement('div');
-    el.style.backgroundImage = `url(/photo/${id})`;
+    el.style.backgroundImage = `url(/photo/${p.id})`;
     photosHolder.append(el);
   });
-  document.getElementById('chatheadstatus').innerHTML = `${players.length} ${players.length > 1 ? 'people' : 'person'} online`;
+  document.getElementById('chatheadstatus').innerHTML = `${inThisRoom.length} ${inThisRoom.length > 1 ? 'people' : 'person'} in this room (${players.length} total)`;
 }
 
 
