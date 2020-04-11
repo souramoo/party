@@ -5,7 +5,7 @@ const ASSET_NAMES = [
 ];
 
 const assets = {};
-const downloadPromise = Promise.all(ASSET_NAMES.map(downloadAsset), faceapi.nets.tinyFaceDetector.loadFromUri('/models'), faceapi.nets.faceLandmark68TinyNet.loadFromUri('/models'), faceapi.nets.faceExpressionNet.loadFromUri('/models'));
+const downloadPromise = Promise.all(ASSET_NAMES.map(downloadAsset));
 
 function downloadAsset(assetName) {
   return new Promise(resolve => {

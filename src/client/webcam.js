@@ -13,8 +13,11 @@ let stream = null;
 export async function initWebcam(webcamEl, canvasEl) {
   webcamElement = webcamEl;
   stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-  webcamElement.onloadedmetadata = () => {
+  webcamElement.onloadedmetadata = async () => {
     setWebcamState(0);
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+    await faceapi.nets.faceLandmark68TinyNet.loadFromUri('/models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('/models');
     onWebcamPlay(webcamEl, canvasEl);
   };
   const videoEl = webcamEl;
