@@ -8,8 +8,8 @@ This isn't like in real life, where we zone in and out of large groups, form sma
 [**Live Demo**](https://party.mookerj.ee/join).
 
 <p float="left">
-<img src="https://github.com/souramoo/party/blob/master/public/assets/landing/2020-04-11.png?raw=true" width="50%" />
-<img src="https://github.com/souramoo/party/blob/master/public/assets/landing/2020-04-11 (1).png?raw=true" width="50%" />
+<img src="https://github.com/souramoo/party/blob/master/public/assets/landing/2020-04-11.png?raw=true" width="49%" />
+<img src="https://github.com/souramoo/party/blob/master/public/assets/landing/2020-04-11 (1).png?raw=true" width="49%" />
 </p>
 
 Built with [Node.js](https://nodejs.org/), [socket.io](https://socket.io/), and [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp).
