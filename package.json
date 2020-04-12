@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint --cache --ext .js,.jsx src/",
-    "develop": "cross-env NODE_ENV=development node src/server/server.js",
+    "develop": "rm -rf dist/* && cross-env NODE_ENV=development nodemon --watch src src/server/server.js",
     "start": "cross-env NODE_ENV=production node src/server/server.js",
     "test": "jest"
   },
@@ -44,5 +44,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
