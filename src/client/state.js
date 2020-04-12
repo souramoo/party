@@ -26,7 +26,6 @@ export function processGameUpdate(update) {
   }
 }
 
-
 export function processPlayerEntered(playerList) {
   players = playerList;
   // update ui
@@ -51,7 +50,6 @@ function showChatHeads() {
   document.getElementById('chatheadstatus').innerHTML = `${inThisRoom.length} ${inThisRoom.length > 1 ? 'people' : 'person'} in this room (${players.length} total)`;
 }
 
-
 function currentServerTime() {
   return firstServerTimestamp + (Date.now() - gameStart) - RENDER_DELAY;
 }
@@ -68,7 +66,7 @@ function getBaseUpdate() {
   return -1;
 }
 
-// Returns { me, others, bullets }
+// Returns { me, others }
 export function getCurrentState() {
   if (!firstServerTimestamp) {
     return {};

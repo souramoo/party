@@ -70,15 +70,9 @@ class Game {
     }
   }
 
-  getLeaderboard() {
-    return Object.values(this.players)
-      .sort((p1, p2) => p2.score - p1.score)
-      .slice(0, 5)
-      .map(p => ({ username: p.username, score: Math.round(p.score) }));
-  }
-
   getPhoto(id) {
-    return (this.players[id] ? this.players[id].username : '');
+    return (this.players[id] ? this.players[id].profilePhoto : '');
+    // todo: blank photo fallback
   }
 
   getPlayers() {
