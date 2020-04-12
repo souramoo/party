@@ -90,12 +90,11 @@ class Game {
   }
 
   createUpdate(player) {
-
     let nearbyPlayers = Object.values(this.players).filter(
       p => p !== player && p.room === player.room,
     );
 
-    if(nearbyPlayers.length > 5) { // add distance check in eek
+    if (nearbyPlayers.length > 5) { // add distance check in eek
       nearbyPlayers = Object.values(this.players).filter(
         p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2 && p.room === player.room,
       );
