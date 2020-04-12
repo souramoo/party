@@ -25,25 +25,7 @@ export async function initWebcam(webcamEl, canvasEl) {
   document.getElementById('play-button').innerHTML = 'Just smile at the camera and wait for it to detect your face! :)';
   document.getElementById('webcamDisabled').innerHTML = '';
 
-  // add mute buttons
-  const videoButton = document.createElement('button');
-  videoButton.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i>';
-
-  videoButton.onclick = () => {
-    stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
-    videoButton.innerHTML = `<i class="fas fa-video${stream.getVideoTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
-  };
-
-  const audioButton = document.createElement('button');
-  audioButton.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i>';
-
-  audioButton.onclick = () => {
-    stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
-    audioButton.innerHTML = `<i class="fas fa-microphone${stream.getAudioTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
-  };
-
-  document.getElementById('controls').appendChild(videoButton);
-  document.getElementById('controls').appendChild(audioButton);
+  addVideoAudioMuteButtons();
 }
 
 export function getStream() {
@@ -88,7 +70,6 @@ export async function onWebcamPlay(videoEl, canvas) {
     }, 1000);
     const dims = faceapi.matchDimensions(canvas, videoEl, true);
     const resized = faceapi.resizeResults(result.detection, dims);
-    // faceapi.draw.drawDetections(canvas,);
     const box = {
       x: dims.width - (resized.box.x),
       y: resized.box.y,
@@ -126,4 +107,25 @@ export async function onWebcamPlay(videoEl, canvas) {
   }
 
   return setTimeout(() => onWebcamPlay(videoEl, canvas), refreshRate);
+}
+
+function addVideoAudioMuteButtons() {
+  const videoButton = document.createElement('button');
+  videoButton.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i>';
+
+  videoButton.onclick = () => {
+    stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
+    videoButton.innerHTML = `<i class="fas fa-video${stream.getVideoTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
+  };
+
+  const audioButton = document.createElement('button');
+  audioButton.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i>';
+
+  audioButton.onclick = () => {
+    stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
+    audioButton.innerHTML = `<i class="fas fa-microphone${stream.getAudioTracks()[0].enabled ? '' : '-slash'}" aria-hidden="true"></i>`;
+  };
+
+  document.getElementById('controls').appendChild(videoButton);
+  document.getElementById('controls').appendChild(audioButton);
 }
