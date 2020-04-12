@@ -1,5 +1,3 @@
-// Learn more about this file at:
-// https://victorzhou.com/blog/build-an-io-game-part-1/#5-client-rendering
 import kd from 'keydrown';
 import { debounce } from 'throttle-debounce';
 import { getCurrentState } from './state';
@@ -54,7 +52,6 @@ function render() {
   // Draw all players
   renderPlayer(me, me);
   others.forEach(renderPlayer.bind(null, me));
-
 }
 
 function renderBackground(x, y) {
@@ -76,34 +73,36 @@ function renderBackground(x, y) {
 
 function renderMinimap(me, others) {
 //  context.save();
-  context.fillStyle = "white";
+  context.fillStyle = 'white';
   context.fillRect(10, 10, 100, 100);
 
   context.rect(10, 10, 100, 100);
   context.stroke();
 
 
-  context.fillStyle = "red";
+  context.fillStyle = 'red';
   context.beginPath();
-   context.arc( 10 + me.x *(100) / Constants.MAP_SIZE , 10 + me.y *(100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
-   context.closePath();
-   context.fill();
+  context.arc(10 + me.x * (100) / Constants.MAP_SIZE,
+    10 + me.y * (100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
+  context.closePath();
+  context.fill();
 
-   others.forEach(o => {
-    context.fillStyle = "blue";
+  others.forEach(o => {
+    context.fillStyle = 'blue';
     context.beginPath();
-     context.arc( 10 + o.x *(100) / Constants.MAP_SIZE , 10 + o.y *(100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
-     context.closePath();
-     context.fill();
-   })
+    context.arc(10 + o.x * (100) / Constants.MAP_SIZE,
+      10 + o.y * (100) / Constants.MAP_SIZE, 5, 0, 6.28, false);
+    context.closePath();
+    context.fill();
+  });
 
-//  context.fill();
+  //  context.fill();
 
- // context.restore();
+  // context.restore();
 /*
   context.font = '15px sans-serif';
   context.fillStyle = "black";
-  context.fillText("minimap", 35, 20);*/
+  context.fillText("minimap", 35, 20); */
 }
 
 // Renders a ship at the given coordinates

@@ -96,7 +96,9 @@ class Game {
 
     if (nearbyPlayers.length > 5) { // add distance check in eek
       nearbyPlayers = Object.values(this.players).filter(
-        p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2 && p.room === player.room,
+        p => p !== player &&
+        p.distanceTo(player) <= Constants.MAP_SIZE / 2 &&
+        p.room === player.room,
       );
     }
 
