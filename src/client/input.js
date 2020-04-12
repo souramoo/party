@@ -1,5 +1,3 @@
-// Learn more about this file at:
-// https://victorzhou.com/blog/build-an-io-game-part-1/#6-client-input-%EF%B8%8F
 import kd from 'keydrown';
 import { updateDirection } from './networking';
 

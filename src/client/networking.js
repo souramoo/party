@@ -1,9 +1,7 @@
-// Learn more about this file at:
-// https://victorzhou.com/blog/build-an-io-game-part-1/#4-client-networking
 import io from 'socket.io-client';
 import { throttle } from 'throttle-debounce';
 import { processGameUpdate, processPlayerEntered, processPlayerLeft } from './state';
-import { getStream } from './webcam';
+// import { getStream } from './webcam';
 
 const Constants = require('../shared/constants');
 

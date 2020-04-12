@@ -10,6 +10,58 @@ const playMenu = document.getElementById('play-menu');
 const playButton = document.getElementById('play-button');
 const webcamInput = document.getElementById('webcamVideo');
 const webcamCanvas = document.getElementById('webcamOverlay');
+const roomIdInput = document.getElementById('room-id');
+
+function initRoomCodeEntry() {
+  if (window.location.hash) {
+    roomIdInput.value = window.location.hash;
+    roomIdInput.disabled = false;
+    document.getElementById('radio-two').checked = true;
+  }
+
+  document.getElementById('radio-one').onclick = () => {
+    roomIdInput.value = '#public';
+    roomIdInput.disabled = true;
+  };
+
+  document.getElementById('radio-two').onclick = () => {
+    roomIdInput.value = (window.location.hash ? window.location.hash : '#public');
+    roomIdInput.disabled = false;
+  };
+
+
+  document.getElementById('radio-three').onclick = () => {
+    const r = `#${Math.random().toString(36).substring(2, 7)}`;
+    roomIdInput.value = r;
+    roomIdInput.disabled = false;
+    if (window.history.pushState) {
+      window.history.pushState(null, null, r);
+    } else {
+      window.location.hash = r;
+    }
+  };
+  roomIdInput.onkeyup = () => {
+    let roomid = roomIdInput.value;
+    if (!roomid.startsWith('#')) {
+      roomid = `#${roomid}`;
+      roomIdInput.value = roomid;
+    }
+
+    if (window.history.pushState) {
+      window.history.pushState(null, null, roomid);
+    } else {
+      window.location.hash = roomid;
+    }
+  };
+}
+
+function fixStyleForGame() {
+  document.getElementById('game-canvas').style.display = 'block';
+  document.getElementById('chatheads').style.display = 'block';
+  document.body.style.backgroundColor = 'white';
+  document.body.style.overflow = 'hidden';
+  document.body.style.overscrollBehavior = 'none';
+}
 
 Promise.all([
   connect(onGameOver),
@@ -17,59 +69,12 @@ Promise.all([
 ]).then(() => {
   playMenu.classList.remove('hidden');
   initWebcam(webcamInput, webcamCanvas);
-
-  if (window.location.hash) {
-    // Fragment exists
-    document.getElementById('room-id').value = window.location.hash;
-    document.getElementById('room-id').disabled = false;
-    document.getElementById('radio-two').checked = true;
-  } else {
-    // Fragment doesn't exist
-  }
-
-  document.getElementById('radio-one').onclick = () => {
-    document.getElementById('room-id').value = '#public';
-    document.getElementById('room-id').disabled = true;
-  };
-
-  document.getElementById('radio-two').onclick = () => {
-    document.getElementById('room-id').value = (window.location.hash ? window.location.hash : '#public');
-    document.getElementById('room-id').disabled = false;
-  };
-
-
-  document.getElementById('radio-three').onclick = () => {
-    const r = `#${Math.random().toString(36).substring(2, 7)}`;
-    document.getElementById('room-id').value = r;
-    document.getElementById('room-id').disabled = false;
-    if (history.pushState) {
-      history.pushState(null, null, r);
-    } else {
-      location.hash = r;
-    }
-  };
-  document.getElementById('room-id').onkeyup = () => {
-    let roomid = document.getElementById('room-id').value;
-    if (!roomid.startsWith('#')) {
-      roomid = `#${roomid}`;
-      document.getElementById('room-id').value = roomid;
-    }
-
-    if (history.pushState) {
-      history.pushState(null, null, roomid);
-    } else {
-      location.hash = roomid;
-    }
-  };
+  initRoomCodeEntry();
   playButton.onclick = () => {
     // Play!
-    document.getElementById('game-canvas').style.display = 'block';
-    document.getElementById('chatheads').style.display = 'block';
-    document.body.style.backgroundColor = 'white';
-    document.body.style.overflow = 'hidden';
-    document.body.style.overscrollBehavior = 'none';
+    fixStyleForGame();
     setWebcamState(1);
-    play(getMyFace(), document.getElementById('room-id').value);
+    play(getMyFace(), roomIdInput.value);
     playMenu.classList.add('hidden');
     initState();
     setTimeout(startCapturingInput, 100);

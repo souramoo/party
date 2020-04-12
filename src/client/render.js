@@ -72,7 +72,6 @@ function renderBackground(x, y) {
 }
 
 function renderMinimap(me, others) {
-//  context.save();
   context.fillStyle = 'white';
   context.fillRect(10, 10, 100, 100);
 
@@ -95,17 +94,8 @@ function renderMinimap(me, others) {
     context.closePath();
     context.fill();
   });
-
-  //  context.fill();
-
-  // context.restore();
-/*
-  context.font = '15px sans-serif';
-  context.fillStyle = "black";
-  context.fillText("minimap", 35, 20); */
 }
 
-// Renders a ship at the given coordinates
 function renderPlayer(me, player) {
   const { id, x, y, direction, emote } = player;
   const canvasX = canvas.width / 2 + x - me.x;

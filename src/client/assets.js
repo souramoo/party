@@ -1,5 +1,3 @@
-import * as faceapi from 'face-api.js';
-
 const ASSET_NAMES = [
   'london.jpg',
 ];
