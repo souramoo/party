@@ -20,8 +20,7 @@ export async function initWebcam(webcamEl, canvasEl) {
     await faceapi.nets.faceExpressionNet.loadFromUri('/models');
     onWebcamPlay(webcamEl, canvasEl);
   };
-  const videoEl = webcamEl;
-  videoEl.srcObject = stream;
+  webcamElement.srcObject = stream;
   document.getElementById('play-button').innerHTML = 'Just smile at the camera and wait for it to detect your face! :)';
   document.getElementById('webcamDisabled').innerHTML = '';
 
