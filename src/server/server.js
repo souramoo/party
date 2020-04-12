@@ -11,8 +11,8 @@ const webpackConfig = require('../../webpack.dev.js');
 // Setup an Express server
 const app = express();
 
+// This lets us go to /join not /join.html
 const publicdir = `${__dirname}/../../dist`;
-
 app.use((req, res, next) => {
   if (req.path.indexOf('.') === -1) {
     const file = `${publicdir + req.path}.html`;
@@ -54,10 +54,8 @@ io.on('connection', socket => {
   socket.on('disconnect', onDisconnect);
 });
 
-// faster webrtc peer connections
-
-function joinGame(username) {
-  game.addPlayer(this, username);
+function joinGame(joinData) {
+  game.addPlayer(this, joinData);
   io.sockets.emit(Constants.MSG_TYPES.BRDCST_PLAYER_ENTERED, game.getPlayers());
 }
 
@@ -75,6 +73,7 @@ function onDisconnect() {
   console.log(`Player left! ${this.id}`);
 }
 
+// return photo
 app.get('/photo/:id', (req, res) => {
   const im = game.getPhoto(req.params.id).split(',')[1];
   if (im) {
