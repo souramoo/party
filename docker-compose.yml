@@ -1,0 +1,6 @@
+services:
+  server:
+    image: ghcr.io/souramoo/party:latest
+    restart: always
+    ports:
+      - 127.0.0.1:16839:3000
