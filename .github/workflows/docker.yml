@@ -33,6 +33,6 @@ jobs:
       with:
         context: .
         tags: |
-          ghcr.io/souramoo/mayballticketer:latest
+          ghcr.io/souramoo/party:latest
         push: ${{ github.ref == 'refs/heads/master' }}
         platforms: linux/amd64
