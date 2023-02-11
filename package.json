@@ -46,6 +46,6 @@
     "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.20"
   }
 }
