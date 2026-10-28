@@ -1,6 +1,7 @@
 FROM node:24-alpine
 WORKDIR /usr/src/app
 RUN apk --no-cache add git
+ENV NODE_OPTIONS --openssl-legacy-provider
 
 COPY package*.json ./
 
