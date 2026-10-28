@@ -1,4 +1,4 @@
-FROM node:16-alpine3.16
+FROM node:24-alpine
 WORKDIR /usr/src/app
 RUN apk --no-cache add git
 
